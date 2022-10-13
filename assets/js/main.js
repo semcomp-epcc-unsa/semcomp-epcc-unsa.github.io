@@ -62,13 +62,13 @@ $(document).ready(function() {
     // get tag element
     var countdown =  document.getElementById("countdown-box");
     var days_span = document.createElement("SPAN");
-    days_span.className = 'días';
+    days_span.className = 'days';
     countdown.appendChild(days_span);
     var hours_span = document.createElement("SPAN");
-    hours_span.className = 'horas';
+    hours_span.className = 'hours';
     countdown.appendChild(hours_span);
     var minutes_span = document.createElement("SPAN");
-    minutes_span.className = 'minutos';
+    minutes_span.className = 'minutes';
     countdown.appendChild(minutes_span);
     var secs_span = document.createElement("SPAN");
     secs_span.className = 'secs';
