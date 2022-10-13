@@ -54,7 +54,7 @@ $(document).ready(function() {
 	
 	/* ======= Countdown ========= */
 	// set the date we're counting down to
-    var target_date = new Date("Oct 12, 2024").getTime();
+    var target_date = new Date("Oct 19, 2022").getTime();
      
     // variables for time units
     var days, hours, minutes, seconds;
@@ -62,13 +62,13 @@ $(document).ready(function() {
     // get tag element
     var countdown =  document.getElementById("countdown-box");
     var days_span = document.createElement("SPAN");
-    days_span.className = 'days';
+    days_span.className = 'días';
     countdown.appendChild(days_span);
     var hours_span = document.createElement("SPAN");
-    hours_span.className = 'hours';
+    hours_span.className = 'horas';
     countdown.appendChild(hours_span);
     var minutes_span = document.createElement("SPAN");
-    minutes_span.className = 'minutes';
+    minutes_span.className = 'minutos';
     countdown.appendChild(minutes_span);
     var secs_span = document.createElement("SPAN");
     secs_span.className = 'secs';
