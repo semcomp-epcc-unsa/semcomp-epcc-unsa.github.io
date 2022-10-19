@@ -73,6 +73,7 @@ $(document).ready(function() {
    var secs_span = document.createElement("SPAN");
    secs_span.className = 'secs';
    countdown.appendChild(secs_span);
+
     
    // update the tag with id "countdown" every 1 second
    setInterval(function () {
@@ -82,27 +83,27 @@ $(document).ready(function() {
        var seconds_left = (target_date - current_date) / 1000;
        
        if(current_date > target_date){
-           days = 0;
-           hours = 0;
-           minutes = 0;
-           seconds = 0;
+           end_countdown_span = 'El evento ya inició!'
        }
        else{
            // do some time calculations
-           days = parseInt(seconds_left / 86400);
-           seconds_left = seconds_left % 86400;
-           
-           hours = parseInt(seconds_left / 3600);
-           seconds_left = seconds_left % 3600;
-           
-           minutes = parseInt(seconds_left / 60);
-           seconds = parseInt(seconds_left % 60);
+            days = parseInt(seconds_left / 86400);
+            seconds_left = seconds_left % 86400;
+            
+            hours = parseInt(seconds_left / 3600);
+            seconds_left = seconds_left % 3600;
+            
+            minutes = parseInt(seconds_left / 60);
+            seconds = parseInt(seconds_left % 60);
+            hours_span.innerHTML = '<h1>El evento ya inició</h1>';
+            
+            days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Days</span>';
+            hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Hrs</span>';
+            minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Mins</span>';
+            secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Secs</span>'; 
        }
        // format countdown string + set tag value.
-       days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Days</span>';
-       hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Hrs</span>';
-       minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Mins</span>';
-       secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Secs</span>'; 
+
     
    }, 1000);
 
