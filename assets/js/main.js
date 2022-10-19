@@ -54,7 +54,7 @@ $(document).ready(function() {
 	
 	/* ======= Countdown ========= */
 	// set the date we're counting down to
-    var target_date = new Date("Oct 19, 2022 09:00:00").getTime();
+    var target_date = new Date("Oct 19, 2022 09:00:00 GMT-5").getTime();
      
     // variables for time units
     var days, hours, minutes, seconds;
