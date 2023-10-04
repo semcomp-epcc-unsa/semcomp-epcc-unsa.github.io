@@ -54,7 +54,7 @@ $(document).ready(function() {
    
    /* ======= Countdown ========= */
    // set the date we're counting down to
-   var target_date = new Date("Oct 19, 2022 09:00:00 GMT-5").getTime();
+   var target_date = new Date("Oct 09, 2023 09:00:00 GMT-5").getTime();
     
    // variables for time units
    var days, hours, minutes, seconds;
@@ -97,10 +97,10 @@ $(document).ready(function() {
             seconds = parseInt(seconds_left % 60);
             hours_span.innerHTML = '<h1>El evento ya inició</h1>';
             
-            days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Days</span>';
-            hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Hrs</span>';
-            minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Mins</span>';
-            secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Secs</span>'; 
+            days_span.innerHTML = '<span class="number">' + days + '</span>' + '<span class="unit">Días</span>';
+            hours_span.innerHTML = '<span class="number">' + hours + '</span>' + '<span class="unit">Horas</span>';
+            minutes_span.innerHTML = '<span class="number">' + minutes + '</span>' + '<span class="unit">Minutos</span>';
+            secs_span.innerHTML = '<span class="number">' + seconds + '</span>' + '<span class="unit">Segundos</span>'; 
        }
        // format countdown string + set tag value.
 
