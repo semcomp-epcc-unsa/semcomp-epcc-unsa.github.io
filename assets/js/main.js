@@ -54,11 +54,15 @@ $(document).ready(function() {
    
    /* ======= Countdown ========= */
    // set the date we're counting down to
-   var target_date = new Date("Nov 18, 2024 09:00:00 GMT-5").getTime();
+   var target_date = new Date("Oct 22, 2025 09:00:00 GMT-5").getTime();
+   var end_date = new Date("Oct 24, 2025 14:00:00 GMT-5").getTime();
     
    // variables for time units
    var days, hours, minutes, seconds;
-    
+   
+   // get tag element
+   var event_status =  document.getElementById("event-status");   
+   
    // get tag element
    var countdown =  document.getElementById("countdown-box");
    var days_span = document.createElement("SPAN");
@@ -73,7 +77,6 @@ $(document).ready(function() {
    var secs_span = document.createElement("SPAN");
    secs_span.className = 'secs';
    countdown.appendChild(secs_span);
-
     
    // update the tag with id "countdown" every 1 second
    setInterval(function () {
@@ -82,11 +85,18 @@ $(document).ready(function() {
        var current_date = new Date().getTime();
        var seconds_left = (target_date - current_date) / 1000;
        
-       if(current_date > target_date){
-           end_countdown_span = 'El evento ya inició!'
+       if(current_date > target_date && current_date < end_date){
+           event_status.innerHTML = '¡El evento ya inició!'
        }
-       else{
-           // do some time calculations
+	   else if(current_date > target_date && current_date == end_date){
+           event_status.innerHTML = '¡El evento ya culminó!'
+       }
+       else if(current_date > target_date && current_date > end_date){
+           event_status.innerHTML = '¡El evento ya culminó!'
+	   }
+	   else {
+           event_status.innerHTML = 'El evento inicia en:'
+		   // do some time calculations
             days = parseInt(seconds_left / 86400);
             seconds_left = seconds_left % 86400;
             
