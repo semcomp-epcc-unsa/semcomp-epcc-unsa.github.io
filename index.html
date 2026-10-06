@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9na Semana de la Computación UNSA - 2026</title>
+<meta name="description" content="9na edición de la Semana de la Computación UNSA, 14-16 de octubre de 2026, Pabellón Alan Turing, Arequipa.">
+<link rel="shortcut icon" href="epccicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,800&family=Source+Serif+4:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:'Montserrat',sans-serif;color:#0C1633;background:#EEF3F5}
+a{color:#0C1633}a:hover{color:#1E3A6E}
+.serif{font-family:'Source Serif 4',Georgia,serif}
+.bar{position:absolute;display:block;z-index:4;pointer-events:none;animation:float 7s ease-in-out infinite alternate}
+@keyframes float{from{transform:translateY(36px);opacity:.45}to{transform:translateY(-36px);opacity:1}}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.caret{display:inline-block;width:.5em;height:.9em;background:#A6D92A;vertical-align:-.1em;margin-left:.08em;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.ghost{transition:background-color .25s ease,color .25s ease}
+.ghost:hover{background-color:#FFFFFF;color:#0C1633 !important}
+.ghost-dark:hover{background-color:#0C1633;color:#FFFFFF !important}
+.glow{animation:glow 2.6s ease-out infinite}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(166,217,42,.55)}70%{box-shadow:0 0 0 16px rgba(166,217,42,0)}100%{box-shadow:0 0 0 0 rgba(166,217,42,0)}}
+.vid{transition:transform .35s ease,opacity .35s ease}
+.vid:hover{transform:translateY(-8px);opacity:1 !important}
+.sp-photo{transition:background-color .3s ease}
+.sp-photo svg path,.sp-photo svg circle{transition:fill .3s ease}
+.sp-photo:hover{background-color:#A6D92A !important}
+.sp-photo:hover svg path,.sp-photo:hover svg circle{fill:#0C1633}
+.prow{transition:transform .2s ease,box-shadow .2s ease}
+.prow:hover{transform:translateX(4px);box-shadow:0 10px 24px rgba(12,22,51,.10)}
+.cta{transition:background-color .2s ease,color .2s ease}
+.cta:hover{background-color:#FFFFFF !important;color:#0C1633 !important}
+.marquee{overflow:hidden}
+.marquee-track{display:flex;width:max-content;animation:slideR 60s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes slideR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.tabbtn{height:44px;padding:0 24px;cursor:pointer;font-family:Montserrat,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;border:2px solid #0C1633;background:transparent;color:#0C1633}
+.tabbtn[aria-selected="true"]{background:#0C1633;color:#FFFFFF}
+.day-panel{display:none}
+.day-panel.active{display:flex}
+.sep{display:flex;align-items:center;gap:14px;padding:16px 0 6px}
+.sep span.lbl{font-size:11px;font-weight:700;letter-spacing:3px;color:#4A5B70}
+.sep span.line{flex-grow:1;height:1px;background:#D5DEE7}
+.row{display:grid;grid-template-columns:110px 26px 56px minmax(0,1fr) 140px;gap:20px;align-items:center;padding:12px 22px;background:#FFFFFF}
+.row.dark{background:#0C1633}
+.row.rest{background:transparent;outline:1.5px dashed #C9D1DA;outline-offset:-1.5px}
+.row.inv{box-shadow:inset 4px 0 0 #A6D92A}
+.row .time{display:flex;flex-direction:column;gap:2px}
+.row .start{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;line-height:1.1;color:#0C1633}
+.row.dark .start{color:#A6D92A}
+.row.rest .start{color:#6A7D93}
+.row .end{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6A7D93}
+.row.dark .end{color:#8FA4C7}
+.row .track{position:relative;align-self:stretch;margin:-12px 0}
+.row .line{position:absolute;left:12px;top:0;bottom:0;width:1.5px;background:#C9D1DA}
+.row.dark .line{background:#2B4A6E}
+.row .dot{position:absolute;left:7px;top:50%;width:10px;height:10px;margin-top:-6px;transform:rotate(45deg);background:#FFFFFF;border:1.5px solid #0C1633}
+.row.dark .dot{background:#A6D92A;border-color:#A6D92A}
+.row.rest .dot{background:#EEF3F5;border-color:#C9D1DA}
+.row .avatar{width:56px;height:56px;border-radius:50%;background:#E1E8EE;display:flex;align-items:center;justify-content:center}
+.row .info{display:flex;flex-direction:column;gap:4px;min-width:0}
+.row .kind{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#3F5A08}
+.row.dark .kind{color:#A6D92A}
+.row .title{font-size:16px;font-weight:700;line-height:1.3;color:#0C1633}
+.row.dark .title{color:#FFFFFF}
+.row.rest .title{color:#4A5B70;font-weight:500}
+.row .who{font-size:14px;color:#4A5B70}
+.row.dark .who{color:#C9D5E3}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+<div style="display:flex;flex-direction:column;background:#EEF3F5;overflow:hidden">
+
+<!-- HERO -->
+<section id="inicio" style="position:relative;min-height:760px;background:#0C1633;clip-path:polygon(0 0,100% 0,100% 80%,50% 100%,0 80%);overflow:hidden">
+<img src="assets/2026/images/hero-bg.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);opacity:.28">
+<span class="bar" aria-hidden="true" style="left:5%;top:90px;width:10px;height:150px;background:#A6D92A;animation-duration:6s"></span>
+<span class="bar" aria-hidden="true" style="left:9%;top:0;width:8px;height:110px;background:#FFFFFF;animation-duration:8s;animation-delay:-2s"></span>
+<span class="bar" aria-hidden="true" style="left:15%;top:330px;width:8px;height:120px;background:#FFFFFF;animation-duration:7s;animation-delay:-4s"></span>
+<span class="bar" aria-hidden="true" style="left:23%;top:170px;width:10px;height:90px;background:#A6D92A;animation-duration:9s;animation-delay:-1s"></span>
+<span class="bar" aria-hidden="true" style="left:74%;top:360px;width:10px;height:170px;background:#A6D92A;animation-duration:7.5s;animation-delay:-5s"></span>
+<span class="bar" aria-hidden="true" style="left:81%;top:120px;width:8px;height:90px;background:#FFFFFF;animation-duration:6s;animation-delay:-2.5s"></span>
+<span class="bar" aria-hidden="true" style="left:90%;top:60px;width:8px;height:140px;background:#FFFFFF;animation-duration:8.5s;animation-delay:-1.5s"></span>
+<span class="bar" aria-hidden="true" style="left:96%;top:300px;width:10px;height:120px;background:#A6D92A;animation-duration:7s;animation-delay:-6s"></span>
+
+<nav aria-label="Principal" style="position:relative;z-index:5;min-height:70px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:14px 16px;font-size:11px;font-weight:700;letter-spacing:1.5px">
+<a href="#sobre" style="color:#FFFFFF;text-decoration:none">EL EVENTO</a>
+<a href="#ponentes" style="color:#FFFFFF;text-decoration:none">PONENTES</a>
+<a href="#programa" style="color:#FFFFFF;text-decoration:none">PROGRAMA</a>
+<a href="#sede" style="color:#FFFFFF;text-decoration:none">SEDE</a>
+<a href="#auspicio" style="color:#FFFFFF;text-decoration:none">AUSPICIO</a>
+<a href="#sede" style="color:#A6D92A;text-decoration:none">INSCRIPCIÓN</a>
+</nav>
+
+<div style="position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;gap:30px;padding:90px 16px 60px;text-align:center">
+<div class="rise d1" style="display:flex;flex-direction:column;align-items:center;gap:14px">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:16px;color:#8FA4C7">~/arequipa $ ./semana-computacion --edicion 9</span>
+<h1 style="margin:0;font-size:clamp(34px,6vw,64px);line-height:1.05;font-weight:800;color:#FFFFFF;letter-spacing:1px"><span style="font-weight:300;color:#A6D92A">&lt;</span>SEMANA DE LA<br>COMPUTACIÓN<span style="font-weight:300;color:#A6D92A">/&gt;</span><span class="caret" aria-hidden="true"></span></h1>
+<span style="font-size:22px;font-weight:500;color:#A6D92A;letter-spacing:1px">14 – 16 OCTUBRE · AREQUIPA</span>
+<span style="font-size:12px;font-weight:700;color:#FFFFFF;letter-spacing:2px">ORGANIZA EPCC · UNSA · ENTRADA LIBRE</span>
+</div>
+<a href="#sede" class="ghost glow rise d2" style="display:inline-flex;align-items:center;height:50px;padding:0 30px;border:2px solid #FFFFFF;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:2px;text-decoration:none">INSCRÍBETE GRATIS</a>
+</div>
+</section>
+
+<!-- ZONA CLARA CON MARCO -->
+<div style="position:relative;display:flex;flex-direction:column;border-left:6px solid #A6D92A;border-right:6px solid #A6D92A">
+
+<!-- VIDEOS -->
+<section aria-label="Ediciones anteriores" style="position:relative;z-index:3;margin-top:-80px;display:flex;flex-wrap:wrap;justify-content:center;gap:22px;align-items:flex-start;padding:0 16px">
+<figure class="vid" style="margin:0;width:380px;opacity:.55;display:flex;flex-direction:column;gap:8px">
+<div style="position:relative;height:230px;background:#8FA4C7;overflow:hidden">
+<img src="assets/2026/images/video-ponentes.jpg" alt="Ponentes de una edición anterior" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);mix-blend-mode:multiply;display:block">
+<button type="button" aria-label="Reproducir video de ponentes" style="position:absolute;left:50%;top:50%;margin:-30px 0 0 -30px;width:60px;height:60px;border:0;background:transparent;cursor:pointer;padding:0"><svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true"><path d="M20 12 L52 32 L20 52 Z" fill="#FFFFFF"></path></svg></button>
+</div>
+<figcaption class="serif" style="font-size:12px;line-height:1.5;color:#4A5B70">Ponentes y organizadores de la edición 2025.</figcaption>
+</figure>
+<figure class="vid" style="margin:0;width:540px;display:flex;flex-direction:column;gap:8px">
+<div style="position:relative;height:310px;background:#A6D92A;overflow:hidden">
+<img src="assets/2026/images/video-misti.jpg" alt="Estudiantes de la EPCC con el Misti de fondo" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply;display:block">
+<button type="button" aria-label="Reproducir aftermovie de la Semana de la Computación" style="position:absolute;left:50%;top:50%;margin:-40px 0 0 -40px;width:80px;height:80px;border:0;background:transparent;cursor:pointer;padding:0"><svg width="80" height="80" viewBox="0 0 64 64" aria-hidden="true"><path d="M20 12 L52 32 L20 52 Z" fill="#FFFFFF"></path></svg></button>
+</div>
+<figcaption class="serif" style="font-size:12px;line-height:1.5;color:#4A5B70">Así se vivió la 8va Semana de la Computación: charlas, talleres y el concurso de programación.</figcaption>
+</figure>
+<figure class="vid" style="margin:0;width:380px;opacity:.55;display:flex;flex-direction:column;gap:8px">
+<div style="position:relative;height:230px;background:#8FA4C7;overflow:hidden">
+<img src="assets/2026/images/hero-bg.jpg" alt="Auditorio lleno en la inauguración" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1);mix-blend-mode:multiply;display:block">
+<button type="button" aria-label="Reproducir video de la inauguración" style="position:absolute;left:50%;top:50%;margin:-30px 0 0 -30px;width:60px;height:60px;border:0;background:transparent;cursor:pointer;padding:0"><svg width="60" height="60" viewBox="0 0 64 64" aria-hidden="true"><path d="M20 12 L52 32 L20 52 Z" fill="#FFFFFF"></path></svg></button>
+</div>
+<figcaption class="serif" style="font-size:12px;line-height:1.5;color:#4A5B70">Inauguración en el Pabellón Alan Turing.</figcaption>
+</figure>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" style="padding:100px 16px 30px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+<h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">SOBRE LA SEMANA</h2>
+<span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-8px"></span>
+<p class="serif" style="margin:0;max-width:620px;font-size:16px;line-height:1.7;color:#33475E">El evento de Ciencia de la Computación más importante de la UNSA. Desde 2018 reúne cada año a la industria y la academia con estudiantes, egresados y docentes de la EPCC en tres días de charlas, talleres y un concurso de programación.</p>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px;margin-top:10px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">9</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">EDICIONES</span></div>
+<span aria-hidden="true" style="width:1px;height:44px;background:#C9D1DA"></span>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">3</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">DÍAS</span></div>
+<span aria-hidden="true" style="width:1px;height:44px;background:#C9D1DA"></span>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">12+</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">PONENTES</span></div>
+</div>
+<a href="2025/index.html" style="margin-top:6px;font-size:12px;font-weight:700;letter-spacing:1.5px;color:#1E3A6E;text-decoration:underline">VER EDICIONES ANTERIORES →</a>
+</section>
+
+<!-- CITAS -->
+<section aria-label="Testimonios" style="padding:50px 0 70px">
+<div class="marquee">
+<div class="marquee-track" id="marquee-track"></div>
+</div>
+</section>
+
+<!-- PONENTES -->
+<!-- TODO: roster ficticio de muestra, reemplazar por los ponentes confirmados de esta edición -->
+<section id="ponentes" style="display:flex;flex-direction:column;align-items:center">
+<div style="width:min(640px,100%);box-sizing:border-box;background:#FFFFFF;padding:34px 24px 84px;margin-bottom:-48px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+<h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">PONENTES</h2>
+<span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-6px"></span>
+<p class="serif" style="margin:0;font-size:13px;line-height:1.6;color:#4A5B70">Investigadores e ingenieros de Perú y el mundo comparten lo que están construyendo en inteligencia artificial, datos, software y seguridad.</p>
+</div>
+</section>
+</div>
+
+<div id="ponentes-grid" style="position:relative;z-index:1;width:100%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr))"></div>
+
+<!-- ZONA CLARA CON MARCO (2) -->
+<div style="position:relative;display:flex;flex-direction:column;border-left:6px solid #A6D92A;border-right:6px solid #A6D92A">
+<section id="programa" style="position:relative;padding:0 0 100px;display:flex;flex-direction:column;align-items:center">
+<div style="width:min(640px,100%);height:60px;background:#FFFFFF"></div>
+<div style="padding-top:70px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+<h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">PROGRAMA</h2>
+<span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-6px"></span>
+</div>
+<div role="tablist" aria-label="Días del evento" id="day-tabs" style="display:flex;justify-content:center;gap:12px;margin-top:30px"></div>
+<div style="width:min(1040px,100%);min-height:1340px;margin-top:12px;padding:0 16px;box-sizing:border-box" id="day-panels"></div>
+</section>
+
+<!-- ORGANIZAN Y AUSPICIAN -->
+<section id="auspicio" style="padding:10px 16px 100px;display:flex;flex-direction:column;align-items:center;gap:40px;text-align:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+<h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">ORGANIZAN Y AUSPICIAN</h2>
+<span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-6px"></span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+<span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">ORGANIZA</span>
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:44px">
+<img src="epccicon.png" alt="Escuela Profesional de Ciencia de la Computación" style="width:96px;height:96px;object-fit:contain">
+<img src="assets/2026/images/unsa-logo.png" alt="Universidad Nacional de San Agustín de Arequipa" style="width:280px;max-width:100%;height:auto">
+</div>
+<span class="serif" style="font-size:14px;color:#4A5B70">Escuela Profesional de Ciencia de la Computación · UNSA</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+<span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">AUSPICIAN</span>
+<!-- TODO: reemplazar por logos reales de auspiciadores confirmados -->
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px">
+<div style="width:240px;height:110px;border:1.5px solid #C9D1DA;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;letter-spacing:2px;color:#95A3B4">[LOGO]</div>
+<div style="width:240px;height:110px;border:1.5px solid #C9D1DA;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;letter-spacing:2px;color:#95A3B4">[LOGO]</div>
+<div style="width:240px;height:110px;border:1.5px solid #C9D1DA;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;letter-spacing:2px;color:#95A3B4">[LOGO]</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+<span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">APOYAN</span>
+<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px">
+<div style="width:180px;height:80px;border:1.5px solid #C9D1DA;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:2px;color:#95A3B4">[LOGO]</div>
+<div style="width:180px;height:80px;border:1.5px solid #C9D1DA;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:2px;color:#95A3B4">[LOGO]</div>
+<div style="width:180px;height:80px;border:1.5px solid #C9D1DA;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;letter-spacing:2px;color:#95A3B4">[LOGO]</div>
+</div>
+</div>
+<a href="mailto:epcc@unsa.edu.pe" class="ghost-dark" style="display:inline-flex;align-items:center;height:46px;padding:0 26px;border:2px solid #0C1633;font-size:12px;font-weight:700;letter-spacing:2px;text-decoration:none;transition:background-color .25s ease,color .25s ease">QUIERO AUSPICIAR</a>
+</section>
+</div>
+
+<!-- SEDE + INSCRIPCIÓN -->
+<section id="sede" style="position:relative;min-height:740px;background:#0C1633;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;color:#FFFFFF;padding:60px 16px">
+<img src="assets/2026/images/sede-bg.jpg" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);opacity:.26">
+<span class="bar" aria-hidden="true" style="left:5%;top:390px;width:10px;height:150px;background:#A6D92A;animation-duration:7s"></span>
+<span class="bar" aria-hidden="true" style="left:11%;top:120px;width:10px;height:110px;background:#A6D92A;animation-duration:8s;animation-delay:-3s"></span>
+<span class="bar" aria-hidden="true" style="left:19%;top:560px;width:8px;height:90px;background:#FFFFFF;animation-duration:6s;animation-delay:-1s"></span>
+<span class="bar" aria-hidden="true" style="left:29%;top:60px;width:10px;height:130px;background:#A6D92A;animation-duration:9s;animation-delay:-5s"></span>
+<span class="bar" aria-hidden="true" style="left:37%;top:470px;width:8px;height:110px;background:#A6D92A;animation-duration:7.5s;animation-delay:-4s"></span>
+<span class="bar" aria-hidden="true" style="left:62%;top:520px;width:10px;height:160px;background:#A6D92A;animation-duration:7.5s;animation-delay:-2s"></span>
+<span class="bar" aria-hidden="true" style="left:70%;top:130px;width:8px;height:90px;background:#FFFFFF;animation-duration:8.5s;animation-delay:-4s"></span>
+<span class="bar" aria-hidden="true" style="left:80%;top:330px;width:10px;height:170px;background:#A6D92A;animation-duration:6.5s;animation-delay:-6s"></span>
+<span class="bar" aria-hidden="true" style="left:90%;top:90px;width:10px;height:120px;background:#A6D92A;animation-duration:9s;animation-delay:-2.5s"></span>
+<span class="bar" aria-hidden="true" style="left:95%;top:560px;width:8px;height:100px;background:#FFFFFF;animation-duration:7s;animation-delay:-1.5s"></span>
+<span style="position:relative;z-index:5;font-size:22px;font-weight:500;letter-spacing:1px">14 – 16 DE OCTUBRE, 2026</span>
+<h2 style="position:relative;z-index:5;margin:0;font-size:clamp(32px,6vw,64px);font-weight:800;line-height:1.05;letter-spacing:1px">PABELLÓN ALAN TURING</h2>
+<span style="position:relative;z-index:5;font-size:clamp(16px,3vw,22px);font-weight:400">Av. Venezuela s/n, Puerta 3 · Campus de Ingeniería UNSA, Arequipa</span>
+<!-- TODO: reemplazar "#" por el link real del formulario de inscripción/talleres/concurso -->
+<a href="#" class="ghost glow" style="position:relative;z-index:5;margin-top:24px;display:inline-flex;align-items:center;height:50px;padding:0 30px;border:2px solid #FFFFFF;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:2px;text-decoration:none">INSCRÍBETE GRATIS</a>
+<span style="position:relative;z-index:5;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:1.5px;color:#C9D5E3">TALLERES Y CONCURSO: <a href="#" style="color:#A6D92A">FORMULARIO DE TALLERES</a> · <a href="#" style="color:#A6D92A">FORMULARIO DEL CONCURSO</a></span>
+</section>
+
+<!-- PREGUNTAS -->
+<div style="position:relative;display:flex;flex-direction:column;border-left:6px solid #A6D92A;border-right:6px solid #A6D92A">
+<section id="faq" style="padding:90px 16px;display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center">
+<div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+<h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">PREGUNTAS</h2>
+<span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-6px"></span>
+</div>
+<div style="width:min(900px,100%);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px 60px;text-align:left">
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:13px;font-weight:700;letter-spacing:1px">¿LA INSCRIPCIÓN TIENE COSTO?</h3><p class="serif" style="margin:0;font-size:15px;line-height:1.6;color:#4A5B70">No. El evento, los talleres y el concurso son gratuitos.</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:13px;font-weight:700;letter-spacing:1px">¿ENTREGAN CERTIFICADO?</h3><p class="serif" style="margin:0;font-size:15px;line-height:1.6;color:#4A5B70">[Respuesta por confirmar con el comité]</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:13px;font-weight:700;letter-spacing:1px">¿NECESITO SER ESTUDIANTE DE LA UNSA?</h3><p class="serif" style="margin:0;font-size:15px;line-height:1.6;color:#4A5B70">[Respuesta por confirmar con el comité]</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><h3 style="margin:0;font-size:13px;font-weight:700;letter-spacing:1px">¿PUEDO IR A MÁS DE UN TALLER?</h3><p class="serif" style="margin:0;font-size:15px;line-height:1.6;color:#4A5B70">[Respuesta por confirmar con el comité]</p></div>
+</div>
+</section>
+</div>
+
+<!-- PIE -->
+<footer style="background:#0C1633;display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:56px 24px;text-align:center">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:15px;color:#8FA4C7">~/arequipa $ ./semana-computacion --inscribirme</span>
+<span style="font-size:clamp(22px,4vw,36px);font-weight:800;color:#FFFFFF;letter-spacing:1px">NOS VEMOS DEL 14 AL 16 DE OCTUBRE<span class="caret" aria-hidden="true"></span></span>
+<a href="#sede" class="ghost glow" style="margin-top:8px;display:inline-flex;align-items:center;height:50px;padding:0 30px;border:2px solid #FFFFFF;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:2px;text-decoration:none">INSCRÍBETE GRATIS</a>
+</div>
+<div style="flex-wrap:wrap;gap:16px;padding:20px 24px;border-top:1px solid #22335A;display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;align-items:center;gap:10px">
+<img src="epccicon.png" alt="" style="width:28px;height:28px;object-fit:contain">
+<span style="font-size:12px;font-weight:700;letter-spacing:1.5px;color:#A6D92A">EPCC · UNSA</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:20px;font-size:10px;font-weight:700;letter-spacing:1.5px">
+<a href="mailto:epcc@unsa.edu.pe" style="color:#FFFFFF;text-decoration:none">EPCC@UNSA.EDU.PE</a>
+<span style="color:#FFFFFF">054 - 285298</span>
+<!-- TODO: reemplazar por los links reales de redes sociales -->
+<a href="#inicio" style="color:#FFFFFF;text-decoration:none">[REDES]</a>
+<a href="#sede" style="color:#FFFFFF;text-decoration:none">INSCRIPCIÓN</a>
+<a href="2025/index.html" style="color:#FFFFFF;text-decoration:none">EDICIONES ANTERIORES</a>
+</div>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  // --- Testimonios (marquee) ---
+  var Q = [
+    ['En la Semana presenté mi primera investigación y conocí a quienes hoy son mis compañeros de trabajo.', 'CARLA MENDOZA', 'EGRESADA EPCC 2021'],
+    ['El taller de ciberseguridad fue mi primer CTF. Desde entonces no he dejado de competir.', 'LUIS RAMOS', 'ESTUDIANTE · EPCC'],
+    ['Ver a egresados trabajando fuera me convenció de postular a una maestría.', 'ANA VARGAS', 'EGRESADA EPCC 2022'],
+    ['Ganar el concurso en segundo año nos abrió la puerta a la maratón nacional.', 'JOSÉ PINTO', 'ESTUDIANTE · EPCC']
+  ];
+  var track = document.getElementById('marquee-track');
+  var avatarSvg = '<svg width="72" height="80" viewBox="0 0 170 200" aria-hidden="true"><circle cx="85" cy="70" r="44" fill="#95A3B4"></circle><path d="M5 200 C5 140 40 120 85 120 C130 120 165 140 165 200 Z" fill="#95A3B4"></path></svg>';
+  function quoteHTML(q, dup){
+    return '<figure aria-hidden="'+dup+'" style="margin:0;width:640px;flex-shrink:0;box-sizing:border-box;padding:0 60px;display:flex;align-items:center;gap:22px;position:relative">' +
+      '<div style="flex-shrink:0;width:96px;height:96px;border-radius:50%;border:4px solid #FFFFFF;box-shadow:0 6px 16px rgba(12,22,51,.14);background:#C9D1DA;display:flex;align-items:flex-end;justify-content:center;overflow:hidden">'+avatarSvg+'</div>' +
+      '<div style="display:flex;flex-direction:column;gap:8px">' +
+      '<blockquote class="serif" style="margin:0;font-style:italic;font-size:19px;line-height:1.4;color:#0C1633">'+q[0]+'</blockquote>' +
+      '<figcaption style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:700;letter-spacing:1.5px">'+q[1]+'</span><span style="font-size:10px;font-weight:500;letter-spacing:1px;color:#4A5B70">'+q[2]+'</span></figcaption>' +
+      '</div><span aria-hidden="true" class="serif" style="position:absolute;right:36px;top:-26px;font-size:90px;line-height:1;color:#A6D92A">”</span></figure>';
+  }
+  var html = '';
+  Q.concat(Q).forEach(function(q, i){ html += quoteHTML(q, i >= Q.length ? 'true' : 'false'); });
+  track.innerHTML = html;
+
+  // --- Ponentes (grilla, roster de muestra) ---
+  var SP = [
+    ['Valeria\nQuispe','BRASIL'], ['Diego\nHuamán','ESTADOS UNIDOS'], ['Lucía\nParedes','ESPAÑA'],
+    ['Andrés\nCondori','PERÚ'], ['Camila\nRivera','CHILE'], ['Martín\nSalas','URUGUAY'],
+    ['Sofía\nCcama','ALEMANIA'], ['Renzo\nApaza','MÉXICO'], ['Natalia\nFlores','EPCC · UNSA'],
+    ['Gabriel\nTorres','COLOMBIA'], ['Mariana\nZegarra','ESTUDIANTE · UNSA'], ['Jorge\nVillena','SUIZA']
+  ];
+  var notchBase = 'position:absolute;top:50%;width:18px;height:18px;margin-top:-9px;background:#0C1633;transform:rotate(45deg);';
+  var photoHTML = '<div class="sp-photo" style="position:relative;height:240px;background-color:#C9D1DA;overflow:hidden;display:flex;align-items:flex-end;justify-content:center"><svg width="170" height="200" viewBox="0 0 170 200" aria-hidden="true"><circle cx="85" cy="70" r="44" fill="#95A3B4"></circle><path d="M5 200 C5 140 40 120 85 120 C130 120 165 140 165 200 Z" fill="#95A3B4"></path></svg></div>';
+  var gridHTML = '';
+  SP.forEach(function(s, i){
+    var row = Math.floor(i / 3);
+    var notch = notchBase + (row % 2 === 0 ? 'left:-9px;' : 'right:-9px;');
+    var nameHTML = '<div style="position:relative;z-index:1;height:240px;box-sizing:border-box;padding:0 22px;background:#0C1633;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">' +
+      '<span aria-hidden="true" style="'+notch+'"></span>' +
+      '<span style="font-size:19px;font-weight:500;line-height:1.25;color:#FFFFFF;white-space:pre-line">'+s[0]+'</span>' +
+      '<span style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#A6D92A">'+s[1]+'</span></div>';
+    gridHTML += (row % 2 === 0) ? (photoHTML + nameHTML) : (nameHTML + photoHTML);
+  });
+  document.getElementById('ponentes-grid').innerHTML = gridHTML;
+
+  // --- Programa (tabs + filas, sin fotos reales disponibles) ---
+  var D = [
+    { tab: 'MIÉ 14', rows: [
+      ['09:00','09:30','ceremonia','Inauguración','Edgar Sarmiento · Dirección EPCC'],
+      ['09:30','09:50','ponencia','Oportunidades de posgrado en Brasil y Europa','Luciano Romero · Universidad de Zúrich'],
+      ['09:50','10:40','ponencia','OCCAM: completitud con análisis de cobertura Monte Carlo','Luciano Romero · Universidad de Zúrich'],
+      ['10:40','11:00','descanso','Coffee break','Hall del pabellón'],
+      ['11:00','11:40','ponencia','Detección de neoantígenos para vacunas personalizadas con IA','Yván Túpac · UCSP'],
+      ['11:40','12:20','ponencia','Patrones delictivos con redes neuronales de grafos','Cristian López · UTEC'],
+      ['12:20','13:00','ponencia','Aprendizaje federado','Rómulo Condori · UNICAMP, Brasil'],
+      ['13:00','15:00','descanso','Almuerzo libre',''],
+      ['15:00','17:00','taller','Introducción a la computación cuántica','Carlos Atencio · Laboratorio'],
+      ['17:00','19:00','taller','Full Time Hacking: el siguiente paso en los CTF','Christhian Taipe y Daniel Marrón · Laboratorio']
+    ]},
+    { tab: 'JUE 15', rows: [
+      ['09:00','09:20','investigacion','Aprendizaje federado con CNN-LSTM para detectar trastornos mentales','Gustavo Ccama'],
+      ['09:20','09:40','investigacion','MIDAS: extracción automática de microservicios con BERT','Sergio Mogollón'],
+      ['09:40','10:00','investigacion','Análisis inmersivo de tareas colaborativas','Nelzon Apaza'],
+      ['10:00','10:40','ponencia','Coding Is Table Stakes: qué distingue a un ingeniero en la era de la IA','Rick Roberts · Ravn, EE. UU.'],
+      ['10:40','11:00','descanso','Coffee break','Hall del pabellón'],
+      ['11:00','11:15','investigacion','G-CaNDEM: grafos causales para simular epidemias','Luciana Huamán'],
+      ['11:15','11:30','investigacion','Esteganografía de imágenes con mapas caóticos','Erick Malcoaccha'],
+      ['11:30','11:45','investigacion','Cifrado con la tabla periódica y un generador pseudoaleatorio','José Paredes'],
+      ['11:45','12:20','ponencia','Microservicios en la práctica: cuándo usarlos y cuándo no','Diego Portocarrero · Yape'],
+      ['12:20','13:00','ponencia','Open source a gran escala','Christofer Chávez · OpenCraft, Alemania'],
+      ['13:00','14:00','descanso','Almuerzo',''],
+      ['14:00','19:00','concurso','Concurso de Programación Competitiva','Coordina Álvaro Mamani · Equipos de tres']
+    ]},
+    { tab: 'VIE 16', rows: [
+      ['09:00','09:40','ponencia','Model Context Protocol: arquitectura y casos de uso','Ángel Concha · Ensolvers, EE. UU.'],
+      ['09:40','10:00','ponencia','Identidades digitales para el transporte del futuro','Álvaro Mamani · UNSA'],
+      ['10:00','10:30','ponencia','El poder de las comunidades para impulsar tu carrera','Juan José León · Somnio Software'],
+      ['10:30','11:00','ponencia','Y luego de estudiar… ¿qué sigue?','Sebastián Alarcón'],
+      ['11:00','11:40','ponencia','Del caos a la información: el trabajo del Data Engineer','Margarita Lacuaña · Tottus'],
+      ['11:40','12:20','ponencia','Del algoritmo al equipo de alto impacto','Jefferson Flores · Smart Reasons'],
+      ['12:20','13:00','ponencia','IA generativa aplicada al sistema judicial','Julissa Villanueva · UCSP'],
+      ['13:00','13:40','ceremonia','Panel: experiencias de internacionalización','Escuela de Ciencia de la Computación'],
+      ['13:40','14:00','ceremonia','Premiación del concurso','Escuela de Ciencia de la Computación'],
+      ['14:00','15:00','ceremonia','Clausura','Escuela de Ciencia de la Computación'],
+      ['15:00','17:00','taller','Aprendizaje federado: oportunidades y herramientas','Rómulo Condori · Laboratorio']
+    ]}
+  ];
+  var KIND = { investigacion: 'INVESTIGACIÓN EPCC', taller: 'TALLER', concurso: 'CONCURSO' };
+  var avatarIconSvg = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6A7D93" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"></path><path d="M16 11h2a2 2 0 0 1 0 4h-2"></path><path d="M8 3v3M12 3v3"></path></svg>';
+  function mins(t){ var p = t.split(':'); return +p[0]*60 + +p[1]; }
+  function rowHTML(r){
+    var dark = r[2] === 'taller' || r[2] === 'concurso';
+    var rest = r[2] === 'descanso';
+    var inv = r[2] === 'investigacion';
+    var cls = 'row' + (dark ? ' dark' : rest ? ' rest' : inv ? ' inv' : '');
+    var kindLabel = KIND[r[2]] || '';
+    var ctaHTML = dark ? '<a href="#sede" class="cta" style="justify-self:end;display:inline-flex;align-items:center;height:40px;padding:0 18px;border:2px solid #A6D92A;background:#A6D92A;color:#0C1633;font-size:11px;font-weight:800;letter-spacing:1.5px;text-decoration:none">INSCRIBIRME</a>' : '<span></span>';
+    return '<div class="'+cls+'">' +
+      '<div class="time"><span class="start">'+r[0]+'</span><span class="end">– '+r[1]+'</span></div>' +
+      '<div class="track"><span class="line"></span><span class="dot"></span></div>' +
+      '<div class="avatar">'+avatarIconSvg+'</div>' +
+      '<div class="info">' +
+        (kindLabel ? '<span class="kind">'+kindLabel+'</span>' : '') +
+        '<span class="title">'+r[3]+'</span>' +
+        (r[4] ? '<span class="who serif">'+r[4]+'</span>' : '') +
+      '</div>' + ctaHTML + '</div>';
+  }
+  function renderDay(i){
+    var rows = D[i].rows, afternoon = false, html = '<div class="sep"><span class="lbl">MAÑANA</span><span class="line"></span></div>';
+    rows.forEach(function(r){
+      if (!afternoon && mins(r[0]) >= 13*60){ afternoon = true; html += '<div class="sep"><span class="lbl">TARDE</span><span class="line"></span></div>'; }
+      html += rowHTML(r);
+    });
+    document.querySelectorAll('.day-panel').forEach(function(p, idx){ p.classList.toggle('active', idx === i); p.innerHTML = idx === i ? html : ''; });
+  }
+  var tabsEl = document.getElementById('day-tabs');
+  var panelsEl = document.getElementById('day-panels');
+  D.forEach(function(d, i){
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'tabbtn'; btn.setAttribute('role','tab');
+    btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    btn.textContent = d.tab;
+    btn.addEventListener('click', function(){
+      tabsEl.querySelectorAll('.tabbtn').forEach(function(b){ b.setAttribute('aria-selected','false'); });
+      btn.setAttribute('aria-selected','true');
+      renderDay(i);
+    });
+    tabsEl.appendChild(btn);
+    var panel = document.createElement('div');
+    panel.className = 'day-panel' + (i === 0 ? ' active' : '');
+    panel.style.cssText = 'flex-direction:column;gap:8px';
+    panelsEl.appendChild(panel);
+  });
+  renderDay(0);
+})();
+</script>
+</body>
+</html>
