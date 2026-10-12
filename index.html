@@ -55,6 +55,8 @@ a{color:#0C1633}a:hover{color:#1E3A6E}
 .prow-body{display:flex;align-items:center;gap:14px;padding-left:14px}
 .prow-avatar{flex:0 0 auto;width:44px;height:44px;border-radius:50%;overflow:hidden;background:#C9D1DA}
 .prow-avatar img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)}
+.prow-avatar.is-logo{background:#FFFFFF;padding:6px}
+.prow-avatar.is-logo img{object-fit:contain;filter:grayscale(1) contrast(1.08)}
 .prow-text{display:flex;flex-direction:column;gap:2px}
 .prow-title{font-size:14px;font-weight:700;color:#0C1633;line-height:1.3}
 .prow-sub{font-size:12px;color:#6A7D93}
@@ -496,8 +498,8 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 
   var PROGRAMA = {
     mie: [
-      { sec:'manana', time:'9:00', end:'9:20', kind:'event', title:'Inauguración', sub:'Director de la EPCC' },
-      { sec:'manana', time:'9:20', end:'9:45', kind:'event', title:'Palabras de las autoridades', sub:'Vicerrector académico y Decano' },
+      { sec:'manana', time:'9:00', end:'9:20', kind:'event', title:'Inauguración', sub:'Director de la EPCC', logo:'epccicon.png' },
+      { sec:'manana', time:'9:20', end:'9:45', kind:'event', title:'Palabras de las autoridades', sub:'Vicerrector académico y Decano', logo:'epccicon.png' },
       { sec:'manana', time:'9:45', end:'10:30', kind:'event', idx:12 },
       { sec:'manana', time:'10:30', end:'11:15', kind:'event', idx:4 },
       { sec:'manana', time:'11:15', end:'11:30', kind:'break', title:'Break' },
@@ -518,12 +520,12 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
     ],
     vie: [
       { sec:'manana', time:'9:00', end:'9:45', kind:'event', idx:1 },
-      { sec:'manana', time:'9:45', end:'10:30', kind:'event', title:'Ravn' },
-      { sec:'manana', time:'10:30', end:'11:15', kind:'event', title:'Panel Pregrado', sub:'Experiencias de Internacionalización EPCC-UNSA 2026' },
+      { sec:'manana', time:'9:45', end:'10:30', kind:'event', title:'Ravn', logo:'assets/2026/images/ravn-logo.jpg' },
+      { sec:'manana', time:'10:30', end:'11:15', kind:'event', title:'Panel Pregrado', sub:'Experiencias de Internacionalización EPCC-UNSA 2026', logo:'epccicon.png' },
       { sec:'manana', time:'11:15', end:'11:30', kind:'break', title:'Break' },
       { sec:'manana', time:'11:30', end:'12:15', kind:'event', idx:9 },
       { sec:'manana', time:'12:15', end:'13:00', kind:'event', idx:7 },
-      { sec:'manana', time:'13:00', end:null, kind:'event', title:'Clausura', sub:'Palabras del comité, Decano y Vicerrector' }
+      { sec:'manana', time:'13:00', end:null, kind:'event', title:'Clausura', sub:'Palabras del comité, Decano y Vicerrector', logo:'epccicon.png' }
     ]
   };
 
@@ -534,9 +536,11 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
     var photo = r.photo || (p ? p.photo : null);
     var cls = 'prow' + (r.kind === 'break' ? ' is-break' : '') + (r.kind === 'taller' ? ' is-taller' : '') + (r.idx != null ? ' linked' : '');
     var attrs = r.idx != null ? ' data-idx="' + r.idx + '" tabindex="0" role="button" aria-label="Ver biografía de ' + (p ? p.name : title) + '"' : '';
-    var avatar = r.kind === 'break' ? '' : (photo
-      ? '<div class="prow-avatar"><img src="' + photo + '" alt="" loading="lazy"></div>'
-      : '<div class="prow-avatar"></div>');
+    var avatar = r.kind === 'break' ? '' : (r.logo
+      ? '<div class="prow-avatar is-logo"><img src="' + r.logo + '" alt="" loading="lazy"></div>'
+      : (photo
+        ? '<div class="prow-avatar"><img src="' + photo + '" alt="" loading="lazy"></div>'
+        : '<div class="prow-avatar"></div>'));
     var label = r.kind === 'taller' ? '<span class="tlabel">TALLER</span>' : '';
     // INSCRIBIRME deshabilitado: la inscripción aún no se abre (ver sección #sede)
     var cta = '';
