@@ -35,6 +35,46 @@ a{color:#0C1633}a:hover{color:#1E3A6E}
 .vid{transition:transform .35s ease,opacity .35s ease}
 .vid:hover{transform:translateY(-8px);opacity:1 !important}
 .daycard{display:flex;flex-direction:column;gap:8px;padding:22px 20px;background:#FFFFFF;outline:1.5px dashed #C9D1DA;outline-offset:-1.5px}
+.ptabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.ptab{height:38px;padding:0 20px;border:2px solid #0C1633;background:#FFFFFF;color:#0C1633;font-size:11px;font-weight:700;letter-spacing:1.5px;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.ptab:hover{background:#0C1633;color:#FFFFFF}
+.ptab[aria-selected="true"]{background:#0C1633;color:#FFFFFF}
+.pday{display:none;flex-direction:column;padding:6px 24px 18px}
+.pday.active{display:flex}
+.psec-label{font-size:11px;font-weight:700;letter-spacing:2px;color:#8296AB;margin:22px 0 4px}
+.ptimeline{display:flex;flex-direction:column}
+.prow{position:relative;display:grid;grid-template-columns:62px 20px 1fr;align-items:center;padding:16px 0;border-bottom:1px solid #E3E8ED}
+.prow:last-child{border-bottom:none}
+.prow-time{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:#0C1633}
+.prow-time small{display:block;font-size:10px;font-weight:400;color:#8296AB;margin-top:2px}
+.prow-marker{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.prow-marker::before{content:'';position:absolute;top:-16px;bottom:-16px;left:50%;width:2px;background:#C9D1DA;transform:translateX(-50%)}
+.prow:first-child .prow-marker::before{top:50%}
+.prow:last-child .prow-marker::before{bottom:50%}
+.prow-dot{position:relative;z-index:1;width:9px;height:9px;flex:0 0 auto;transform:rotate(45deg);border:2px solid #8FA4C7;background:#EEF3F5}
+.prow-body{display:flex;align-items:center;gap:14px;padding-left:14px}
+.prow-avatar{flex:0 0 auto;width:44px;height:44px;border-radius:50%;overflow:hidden;background:#C9D1DA}
+.prow-avatar img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)}
+.prow-text{display:flex;flex-direction:column;gap:2px}
+.prow-title{font-size:14px;font-weight:700;color:#0C1633;line-height:1.3}
+.prow-sub{font-size:12px;color:#6A7D93}
+.prow.linked{cursor:pointer}
+.prow.linked:hover .prow-title,.prow.linked:focus-visible .prow-title{color:#1E3A6E}
+.prow.linked:focus-visible{outline:2px solid #A6D92A;outline-offset:-2px}
+.prow.is-taller.linked:hover .prow-title,.prow.is-taller.linked:focus-visible .prow-title{color:#A6D92A}
+.prow.is-break .prow-dot{border-color:#C9D1DA;background:#FFFFFF}
+.prow.is-break .prow-title{font-weight:500;color:#8296AB}
+.prow.is-break .prow-sub{color:#A9B6C4}
+.prow.is-taller{background:#0C1633;margin:0 -24px;padding:16px 24px;border-bottom-color:#16244A}
+.prow.is-taller .prow-dot{border-color:#A6D92A;background:#A6D92A}
+.prow.is-taller .prow-time{color:#FFFFFF}
+.prow.is-taller .prow-time small{color:#8FA4C7}
+.prow.is-taller .tlabel{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;color:#A6D92A}
+.prow.is-taller .prow-title{color:#FFFFFF}
+.prow.is-taller .prow-sub{color:#C9D5E3}
+.prow.is-taller .prow-body{flex-wrap:wrap}
+.prow-cta{margin-left:auto;flex:0 0 auto;height:34px;padding:0 18px;background:#A6D92A;color:#0C1633;font-size:11px;font-weight:700;letter-spacing:1.3px;border:none;text-decoration:none;display:inline-flex;align-items:center;cursor:pointer}
+@media (max-width:480px){.prow{grid-template-columns:52px 18px 1fr}.prow-time{font-size:11.5px}.prow-avatar{width:36px;height:36px}.prow.is-taller .prow-cta{margin-left:0;margin-top:8px}}
 .pgrid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:50vw}
 @media (min-width:700px){.pgrid{grid-template-columns:repeat(4,1fr);grid-auto-rows:25vw}}
 @media (min-width:1100px){.pgrid{grid-template-columns:repeat(6,1fr);grid-auto-rows:calc(100vw/6)}}
@@ -163,13 +203,13 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 <h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">SOBRE LA SEMANA</h2>
 <span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-8px"></span>
 <p class="serif" style="margin:0;max-width:620px;font-size:16px;line-height:1.7;color:#33475E">El evento de Ciencia de la Computación más importante de la UNSA. Desde 2018 reúne cada año a la industria y la academia con estudiantes, egresados y docentes de la EPCC en tres días de charlas, talleres y un concurso de programación.</p>
-<p class="serif" style="margin:0;max-width:560px;font-size:14px;line-height:1.7;color:#4A5B70">Esta página se irá completando con el cronograma final y los auspiciadores de esta edición. Ya puedes conocer a los ponentes confirmados más abajo. Vuelve pronto o escríbenos si quieres participar.</p>
+<p class="serif" style="margin:0;max-width:560px;font-size:14px;line-height:1.7;color:#4A5B70">Esta página se irá completando con los auspiciadores de esta edición. Ya puedes conocer a los ponentes y el programa confirmados más abajo. Vuelve pronto o escríbenos si quieres participar.</p>
 <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px;margin-top:10px">
 <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">9</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">EDICIONES</span></div>
 <span aria-hidden="true" style="width:1px;height:44px;background:#C9D1DA"></span>
 <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">3</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">DÍAS</span></div>
 <span aria-hidden="true" style="width:1px;height:44px;background:#C9D1DA"></span>
-<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">18+</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">PONENTES</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:36px;font-weight:300">14+</span><span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">PONENTES</span></div>
 </div>
 <div id="ediciones" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:4px">
 <span class="cdl" style="color:#4A5B70">EDICIONES ANTERIORES</span>
@@ -201,42 +241,55 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 <div class="pcell pcell-photo" data-idx="5" tabindex="0" role="button" aria-label="Ver biografía de Luis Antonio Bernal Chahuayo"><img src="assets/2026/images/ponentes/luis-bernal-chahuayo.jpg" alt="Luis Antonio Bernal Chahuayo" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-photo" data-idx="11" tabindex="0" role="button" aria-label="Ver biografía de Sebastian Wilde Alarcón Arenas"><img src="assets/2026/images/ponentes/sebastian-alarcon-arenas.jpg" alt="Sebastian Wilde Alarcón Arenas" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="11" tabindex="0" role="button" aria-label="Ver biografía de Sebastian Wilde Alarcón Arenas"><span class="pname">Sebastian Wilde Alarcón Arenas</span><span class="prole">Dekoding</span></div>
+<!-- No confirmó asistencia: Hayde Luzmila Humpire Cutipa
 <div class="pcell pcell-photo" data-idx="14" tabindex="0" role="button" aria-label="Ver biografía de Hayde Luzmila Humpire Cutipa"><img src="assets/2026/images/ponentes/hayde-humpire-cutipa.jpg" alt="Hayde Luzmila Humpire Cutipa" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="14" tabindex="0" role="button" aria-label="Ver biografía de Hayde Luzmila Humpire Cutipa"><span class="pname">Hayde Luzmila Humpire Cutipa</span><span class="prole">BBVA</span></div>
+-->
 <div class="pcell pcell-photo" data-idx="16" tabindex="0" role="button" aria-label="Ver biografía de Jefferson Miguel Flores Herrera"><img src="assets/2026/images/ponentes/jefferson-flores-herrera.jpg" alt="Jefferson Miguel Flores Herrera" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="16" tabindex="0" role="button" aria-label="Ver biografía de Jefferson Miguel Flores Herrera"><span class="pname">Jefferson Miguel Flores Herrera</span><span class="prole">Smart Reasons</span></div>
-<div class="pcell pcell-info" data-idx="9" tabindex="0" role="button" aria-label="Ver biografía de Yuliana Madeleine Choque Condori"><span class="pname">Yuliana Madeleine Choque Condori</span><span class="prole">Globant</span></div>
 <div class="pcell pcell-photo" data-idx="9" tabindex="0" role="button" aria-label="Ver biografía de Yuliana Madeleine Choque Condori"><img src="assets/2026/images/ponentes/yuliana-choque-condori.jpg" alt="Yuliana Madeleine Choque Condori" loading="lazy" width="240" height="240"></div>
+<div class="pcell pcell-info" data-idx="9" tabindex="0" role="button" aria-label="Ver biografía de Yuliana Madeleine Choque Condori"><span class="pname">Yuliana Madeleine Choque Condori</span><span class="prole">Globant</span></div>
 <div class="pcell pcell-info" data-idx="4" tabindex="0" role="button" aria-label="Ver biografía de Braulio Nayap Maldonado Casilla"><span class="pname">Braulio Nayap Maldonado Casilla</span><span class="prole">PHINIX S.A.C</span></div>
 <div class="pcell pcell-photo" data-idx="4" tabindex="0" role="button" aria-label="Ver biografía de Braulio Nayap Maldonado Casilla"><img src="assets/2026/images/ponentes/braulio-maldonado-casilla.jpg" alt="Braulio Nayap Maldonado Casilla" loading="lazy" width="240" height="240"></div>
+<!-- No confirmó asistencia: Eduardo Antonio Sanchez Hincho
 <div class="pcell pcell-info" data-idx="6" tabindex="0" role="button" aria-label="Ver biografía de Eduardo Antonio Sanchez Hincho"><span class="pname">Eduardo Antonio Sanchez Hincho</span><span class="prole">Apurata</span></div>
 <div class="pcell pcell-photo" data-idx="6" tabindex="0" role="button" aria-label="Ver biografía de Eduardo Antonio Sanchez Hincho"><img src="assets/2026/images/ponentes/eduardo-sanchez-hincho.jpg" alt="Eduardo Antonio Sanchez Hincho" loading="lazy" width="240" height="240"></div>
-<div class="pcell pcell-photo" data-idx="7" tabindex="0" role="button" aria-label="Ver biografía de Gonzalo Caira Aguilar"><img src="assets/2026/images/ponentes/gonzalo-caira-aguilar.jpg" alt="Gonzalo Caira Aguilar" loading="lazy" width="240" height="240"></div>
+-->
 <div class="pcell pcell-info" data-idx="7" tabindex="0" role="button" aria-label="Ver biografía de Gonzalo Caira Aguilar"><span class="pname">Gonzalo Caira Aguilar</span><span class="prole">Globant</span></div>
-<div class="pcell pcell-photo" data-idx="8" tabindex="0" role="button" aria-label="Ver biografía de Ademir Villena Zevallos"><img src="assets/2026/images/ponentes/ademir-villena-zevallos.jpg" alt="Ademir Villena Zevallos" loading="lazy" width="240" height="240"></div>
+<div class="pcell pcell-photo" data-idx="7" tabindex="0" role="button" aria-label="Ver biografía de Gonzalo Caira Aguilar"><img src="assets/2026/images/ponentes/gonzalo-caira-aguilar.jpg" alt="Gonzalo Caira Aguilar" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="8" tabindex="0" role="button" aria-label="Ver biografía de Ademir Villena Zevallos"><span class="pname">Ademir Villena Zevallos</span><span class="prole">Somnio Software</span></div>
+<div class="pcell pcell-photo" data-idx="8" tabindex="0" role="button" aria-label="Ver biografía de Ademir Villena Zevallos"><img src="assets/2026/images/ponentes/ademir-villena-zevallos.jpg" alt="Ademir Villena Zevallos" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-photo" data-idx="17" tabindex="0" role="button" aria-label="Ver biografía de Cristhian Taipe"><img src="assets/2026/images/ponentes/cristhian-taipe.jpg" alt="Cristhian Taipe" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="17" tabindex="0" role="button" aria-label="Ver biografía de Cristhian Taipe"><span class="pname">Cristhian Taipe</span><span class="prole">MistiHack</span></div>
-<div class="pcell pcell-info" data-idx="10" tabindex="0" role="button" aria-label="Ver biografía de Piero Emiliano Vizcarra Vargas"><span class="pname">Piero Emiliano Vizcarra Vargas</span><span class="prole">GROWTH STRATEGY</span></div>
 <div class="pcell pcell-photo" data-idx="10" tabindex="0" role="button" aria-label="Ver biografía de Piero Emiliano Vizcarra Vargas"><img src="assets/2026/images/ponentes/piero-vizcarra-vargas.jpg" alt="Piero Emiliano Vizcarra Vargas" loading="lazy" width="240" height="240"></div>
+<div class="pcell pcell-info" data-idx="10" tabindex="0" role="button" aria-label="Ver biografía de Piero Emiliano Vizcarra Vargas"><span class="pname">Piero Emiliano Vizcarra Vargas</span><span class="prole">GROWTH STRATEGY</span></div>
+<!-- No confirmó asistencia: Jerson Zúñiga Coayla
 <div class="pcell pcell-info" data-idx="13" tabindex="0" role="button" aria-label="Ver biografía de Jerson Zúñiga Coayla"><span class="pname">Jerson Zúñiga Coayla</span><span class="prole">Banco Falabella</span></div>
 <div class="pcell pcell-photo" data-idx="13" tabindex="0" role="button" aria-label="Ver biografía de Jerson Zúñiga Coayla"><img src="assets/2026/images/ponentes/jerson-zuniga-coayla.jpg" alt="Jerson Zúñiga Coayla" loading="lazy" width="240" height="240"></div>
+-->
+<!-- No confirmó asistencia: Jhunior Chavez Cruz
 <div class="pcell pcell-info" data-idx="15" tabindex="0" role="button" aria-label="Ver biografía de Jhunior Chavez Cruz"><span class="pname">Jhunior Chavez Cruz</span><span class="prole">Interbank</span></div>
 <div class="pcell pcell-photo" data-idx="15" tabindex="0" role="button" aria-label="Ver biografía de Jhunior Chavez Cruz"><img src="assets/2026/images/ponentes/jhunior-chavez-cruz.jpg" alt="Jhunior Chavez Cruz" loading="lazy" width="240" height="240"></div>
+-->
 </div>
 
 <!-- PROGRAMA + ORGANIZAN -->
 <div style="position:relative;display:flex;flex-direction:column;border-left:6px solid #A6D92A;border-right:6px solid #A6D92A">
-<section id="programa" style="padding:100px 16px;display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center">
-<div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+<section id="programa" style="padding:100px 16px;display:flex;flex-direction:column;align-items:center;gap:30px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
 <h2 style="margin:0;font-size:30px;font-weight:500;letter-spacing:2px">PROGRAMA</h2>
 <span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-6px"></span>
-<p class="serif" style="margin:0;max-width:520px;font-size:15px;line-height:1.7;color:#4A5B70">El cronograma de charlas, talleres y el concurso de programación se está armando y se publicará aquí antes del evento.</p>
+<p class="serif" style="margin:0;max-width:520px;font-size:15px;line-height:1.7;color:#4A5B70">Tres días de charlas, un panel y talleres prácticos en el Pabellón Alan Turing. Horarios sujetos a pequeños ajustes del comité.</p>
 </div>
-<div style="width:min(760px,100%);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
-<div class="daycard"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:#1E3A6E">MIÉ 14</span><span class="serif" style="font-size:13px;color:#6A7D93">Programa por confirmar</span></div>
-<div class="daycard"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:#1E3A6E">JUE 15</span><span class="serif" style="font-size:13px;color:#6A7D93">Programa por confirmar</span></div>
-<div class="daycard"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:#1E3A6E">VIE 16</span><span class="serif" style="font-size:13px;color:#6A7D93">Programa por confirmar</span></div>
+<div class="ptabs" role="tablist" aria-label="Día del programa">
+<button type="button" class="ptab" role="tab" data-day="mie" aria-selected="true">MIÉ 14</button>
+<button type="button" class="ptab" role="tab" data-day="jue" aria-selected="false">JUE 15</button>
+<button type="button" class="ptab" role="tab" data-day="vie" aria-selected="false">VIE 16</button>
+</div>
+<div style="width:min(760px,100%);background:#FFFFFF;outline:1.5px dashed #C9D1DA;outline-offset:-1.5px">
+<div class="pday active" data-day="mie"></div>
+<div class="pday" data-day="jue"></div>
+<div class="pday" data-day="vie"></div>
 </div>
 </section>
 
@@ -331,8 +384,8 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 
 (function(){
   // 3 días de evento: 14, 15 y 16 de octubre de 2026 (hora Perú, GMT-5)
-  var start = new Date("Oct 14, 2026 09:00:00 GMT-5").getTime();
-  var end = new Date("Oct 16, 2026 23:59:59 GMT-5").getTime();
+  var start = new Date("2026-10-14T09:00:00-05:00").getTime();
+  var end = new Date("2026-10-16T23:59:59-05:00").getTime();
   var box = document.getElementById('countdown');
   var note = document.getElementById('countdown-note');
   var units = [
@@ -430,10 +483,94 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
     dialog.showModal();
   }
 
-  document.querySelectorAll('.pgrid .pcell').forEach(function(cell){
-    cell.addEventListener('click', function(){ openModal(cell.dataset.idx); });
-    cell.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(cell.dataset.idx); }
+  function bindBioTriggers(selector){
+    document.querySelectorAll(selector).forEach(function(cell){
+      cell.addEventListener('click', function(){ openModal(cell.dataset.idx); });
+      cell.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(cell.dataset.idx); }
+      });
+    });
+  }
+
+  bindBioTriggers('.pgrid .pcell');
+
+  var PROGRAMA = {
+    mie: [
+      { sec:'manana', time:'9:00', end:'9:20', kind:'event', title:'Inauguración', sub:'Director de la EPCC' },
+      { sec:'manana', time:'9:20', end:'9:45', kind:'event', title:'Palabras de las autoridades', sub:'Vicerrector académico y Decano' },
+      { sec:'manana', time:'9:45', end:'10:30', kind:'event', idx:12 },
+      { sec:'manana', time:'10:30', end:'11:15', kind:'event', idx:4 },
+      { sec:'manana', time:'11:15', end:'11:30', kind:'break', title:'Break' },
+      { sec:'manana', time:'11:30', end:'12:15', kind:'event', idx:5 },
+      { sec:'manana', time:'12:15', end:'13:00', kind:'event', idx:10 },
+      { sec:'tarde', time:'13:00', end:'15:00', kind:'break', title:'Almuerzo libre' },
+      { sec:'tarde', time:'15:00', end:'18:00', kind:'taller', title:'Taller de Ciberseguridad', sub:'Cristhian Taipe · MistiHack', idx:17 }
+    ],
+    jue: [
+      { sec:'manana', time:'9:00', end:'9:45', kind:'event', idx:8 },
+      { sec:'manana', time:'9:45', end:'10:30', kind:'event', idx:0 },
+      { sec:'manana', time:'10:30', end:'11:15', kind:'event', idx:2 },
+      { sec:'manana', time:'11:15', end:'11:30', kind:'break', title:'Break' },
+      { sec:'manana', time:'11:30', end:'12:15', kind:'event', idx:11 },
+      { sec:'manana', time:'12:15', end:'13:00', kind:'event', idx:3 },
+      { sec:'tarde', time:'13:00', end:'15:00', kind:'break', title:'Almuerzo libre' },
+      { sec:'tarde', time:'15:00', end:'18:00', kind:'taller', title:'Taller de Programación Competitiva' }
+    ],
+    vie: [
+      { sec:'manana', time:'9:00', end:'9:45', kind:'event', idx:1 },
+      { sec:'manana', time:'9:45', end:'10:30', kind:'event', title:'Ravn' },
+      { sec:'manana', time:'10:30', end:'11:15', kind:'event', title:'Panel Pregrado', sub:'Experiencias de Internacionalización EPCC-UNSA 2026' },
+      { sec:'manana', time:'11:15', end:'11:30', kind:'break', title:'Break' },
+      { sec:'manana', time:'11:30', end:'12:15', kind:'event', idx:9 },
+      { sec:'manana', time:'12:15', end:'13:00', kind:'event', idx:7 },
+      { sec:'manana', time:'13:00', end:null, kind:'event', title:'Clausura', sub:'Palabras del comité, Decano y Vicerrector' }
+    ]
+  };
+
+  function rowHTML(r){
+    var p = r.idx != null ? PONENTES[r.idx] : null;
+    var title = r.title || (p ? p.name : '');
+    var sub = r.sub || (p ? [p.role, p.inst].filter(Boolean).join(' · ') : '');
+    var photo = r.photo || (p ? p.photo : null);
+    var cls = 'prow' + (r.kind === 'break' ? ' is-break' : '') + (r.kind === 'taller' ? ' is-taller' : '') + (r.idx != null ? ' linked' : '');
+    var attrs = r.idx != null ? ' data-idx="' + r.idx + '" tabindex="0" role="button" aria-label="Ver biografía de ' + (p ? p.name : title) + '"' : '';
+    var avatar = r.kind === 'break' ? '' : (photo
+      ? '<div class="prow-avatar"><img src="' + photo + '" alt="" loading="lazy"></div>'
+      : '<div class="prow-avatar"></div>');
+    var label = r.kind === 'taller' ? '<span class="tlabel">TALLER</span>' : '';
+    // INSCRIBIRME deshabilitado: la inscripción aún no se abre (ver sección #sede)
+    var cta = '';
+    return '<div class="' + cls + '"' + attrs + '>'
+      + '<div class="prow-time">' + r.time + (r.end ? '<small>– ' + r.end + '</small>' : '') + '</div>'
+      + '<div class="prow-marker"><span class="prow-dot"></span></div>'
+      + '<div class="prow-body">' + avatar + '<div class="prow-text">' + label + '<span class="prow-title">' + title + '</span>' + (sub ? '<span class="prow-sub">' + sub + '</span>' : '') + '</div>' + cta + '</div>'
+      + '</div>';
+  }
+
+  function renderDay(rows){
+    var html = '', lastSec = null, open = false;
+    rows.forEach(function(r){
+      if (r.sec !== lastSec) {
+        if (open) html += '</div>';
+        html += '<div class="psec-label">' + (r.sec === 'manana' ? 'MAÑANA' : 'TARDE') + '</div><div class="ptimeline">';
+        open = true;
+        lastSec = r.sec;
+      }
+      html += rowHTML(r);
+    });
+    if (open) html += '</div>';
+    return html;
+  }
+
+  document.querySelectorAll('.pday').forEach(function(el){
+    el.innerHTML = renderDay(PROGRAMA[el.dataset.day]);
+  });
+  bindBioTriggers('.prow[data-idx]');
+
+  document.querySelectorAll('.ptab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.ptab').forEach(function(b){ b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+      document.querySelectorAll('.pday').forEach(function(d){ d.classList.toggle('active', d.dataset.day === btn.dataset.day); });
     });
   });
 
