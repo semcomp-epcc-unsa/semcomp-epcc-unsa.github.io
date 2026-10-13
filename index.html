@@ -56,9 +56,9 @@ a{color:#0C1633}a:hover{color:#1E3A6E}
 .prow-dot{position:relative;z-index:1;width:9px;height:9px;flex:0 0 auto;transform:rotate(45deg);border:2px solid #8FA4C7;background:#EEF3F5}
 .prow-body{display:flex;align-items:center;gap:14px;padding-left:14px}
 .prow-avatar{flex:0 0 auto;width:44px;height:44px;border-radius:50%;overflow:hidden;background:#C9D1DA}
-.prow-avatar img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1)}
+.prow-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .prow-avatar.is-logo{background:#FFFFFF;padding:6px}
-.prow-avatar.is-logo img{object-fit:contain;filter:grayscale(1) contrast(1.08)}
+.prow-avatar.is-logo img{object-fit:contain;filter:contrast(1.08)}
 .prow-text{display:flex;flex-direction:column;gap:2px}
 .prow-title{font-size:14px;font-weight:700;color:#0C1633;line-height:1.3}
 .prow-sub{font-size:12px;color:#6A7D93}
@@ -91,13 +91,13 @@ a{color:#0C1633}a:hover{color:#1E3A6E}
 .pcell-info .pname{font-size:15px;font-weight:700;line-height:1.25}
 .pcell-info .prole{display:block;margin-top:6px;font-size:10px;font-weight:700;letter-spacing:1.3px;color:#A6D92A;text-transform:uppercase}
 .pcell-photo{background:#C9D1DA;overflow:hidden;position:relative}
-.pcell-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.08);transition:transform .3s ease,filter .3s ease}
-.pcell-photo:hover img,.pcell-photo:focus-visible img{transform:scale(1.05);filter:grayscale(0)}
+.pcell-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.08);transition:transform .3s ease}
+.pcell-photo:hover img,.pcell-photo:focus-visible img{transform:scale(1.05)}
 dialog.pmodal{border:none;padding:0;width:calc(100% - 32px);max-width:540px;height:720px;max-height:calc(100vh - 48px);background:#FFFFFF;color:#0C1633;overflow:hidden;border-radius:18px;box-shadow:0 24px 60px rgba(12,22,51,.28)}
 dialog.pmodal::backdrop{background:rgba(12,22,51,.94)}
 dialog.pmodal .pm-grid{display:grid;width:100%;height:100%;max-height:calc(100vh - 48px);grid-template-columns:1fr;grid-template-rows:280px auto minmax(0,1fr);grid-template-areas:"photo" "link" "bio"}
 dialog.pmodal .pm-photowrap{grid-area:photo;position:relative;overflow:hidden;background:#0C1633}
-dialog.pmodal .pm-photo{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1) contrast(1.08) brightness(1.02);display:block}
+dialog.pmodal .pm-photo{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:contrast(1.08) brightness(1.02);display:block}
 dialog.pmodal .pm-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,51,0) 42%,rgba(12,22,51,.94) 100%)}
 dialog.pmodal .pm-caption{display:none}
 dialog.pmodal .pm-lime-edge{display:none}
@@ -234,7 +234,6 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 <span aria-hidden="true" style="width:150px;height:3px;background:#A6D92A;margin-top:-8px"></span>
 <p class="serif" style="margin:0;max-width:460px;font-size:15px;line-height:1.7;color:#4A5B70">Investigadores e ingenieros de Perú y el mundo comparten lo que están construyendo en inteligencia artificial, datos, software y seguridad.</p>
 </div>
-</div>
 <div class="pgrid">
 <div class="pcell pcell-photo" data-idx="0" tabindex="0" role="button" aria-label="Ver biografía de Cristian José López Del Álamo"><img src="assets/2026/images/ponentes/cristian-lopez-del-alamo.jpg" alt="Cristian José López Del Álamo" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="0" tabindex="0" role="button" aria-label="Ver biografía de Cristian José López Del Álamo"><span class="pname">Cristian José López Del Álamo</span><span class="prole">UTEC; Lima</span></div>
@@ -272,12 +271,13 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 <div class="pcell pcell-info" data-idx="8" tabindex="0" role="button" aria-label="Ver biografía de Ademir Villena Zevallos"><span class="pname">Ademir Villena Zevallos</span><span class="prole">Somnio Software</span></div>
 <div class="pcell pcell-photo" data-idx="10" tabindex="0" role="button" aria-label="Ver biografía de Piero Emiliano Vizcarra Vargas"><img src="assets/2026/images/ponentes/piero-vizcarra-vargas.jpg" alt="Piero Emiliano Vizcarra Vargas" loading="lazy" width="240" height="240"></div>
 <div class="pcell pcell-info" data-idx="10" tabindex="0" role="button" aria-label="Ver biografía de Piero Emiliano Vizcarra Vargas"><span class="pname">Piero Emiliano Vizcarra Vargas</span><span class="prole">GROWTH STRATEGY</span></div>
-<div class="pcell pcell-info" data-idx="13" tabindex="0" role="button" aria-label="Ver biografía de Jerson Zúñiga Coayla"><span class="pname">Jerson Zúñiga Coayla</span><span class="prole">Banco Falabella</span></div>
 <div class="pcell pcell-photo" data-idx="13" tabindex="0" role="button" aria-label="Ver biografía de Jerson Zúñiga Coayla"><img src="assets/2026/images/ponentes/jerson-zuniga-coayla.jpg" alt="Jerson Zúñiga Coayla" loading="lazy" width="240" height="240"></div>
+<div class="pcell pcell-info" data-idx="13" tabindex="0" role="button" aria-label="Ver biografía de Jerson Zúñiga Coayla"><span class="pname">Jerson Zúñiga Coayla</span><span class="prole">Banco Falabella</span></div>
 <!-- No confirmó asistencia: Jhunior Chavez Cruz
 <div class="pcell pcell-info" data-idx="15" tabindex="0" role="button" aria-label="Ver biografía de Jhunior Chavez Cruz"><span class="pname">Jhunior Chavez Cruz</span><span class="prole">Interbank</span></div>
 <div class="pcell pcell-photo" data-idx="15" tabindex="0" role="button" aria-label="Ver biografía de Jhunior Chavez Cruz"><img src="assets/2026/images/ponentes/jhunior-chavez-cruz.jpg" alt="Jhunior Chavez Cruz" loading="lazy" width="240" height="240"></div>
 -->
+</div>
 </div>
 
 <!-- PROGRAMA + ORGANIZAN -->
@@ -550,8 +550,8 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
   function rowHTML(r){
     var p = r.idx != null ? PONENTES[r.idx] : null;
     var hasTopic = !r.title && p && p.topic;
-    var title = hasTopic ? p.topic : (r.title || (p ? p.name : ''));
-    var byline = hasTopic ? p.name : null;
+    var title = r.title || (hasTopic ? p.topic : '');
+    var byline = hasTopic ? p.name : (!r.title && p ? p.name : null);
     var sub = r.sub || (p ? [p.role, p.inst].filter(Boolean).join(' · ') : '');
     var photo = r.photo || (p ? p.photo : null);
     var cls = 'prow' + (r.kind === 'break' ? ' is-break' : '') + (r.kind === 'taller' ? ' is-taller' : '') + (r.idx != null ? ' linked' : '');
@@ -566,7 +566,7 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
     return '<div class="' + cls + '"' + attrs + '>'
       + '<div class="prow-time">' + r.time + (r.end ? '<small>– ' + r.end + '</small>' : '') + '</div>'
       + '<div class="prow-marker"><span class="prow-dot"></span></div>'
-      + '<div class="prow-body">' + avatar + '<div class="prow-text">' + label + '<span class="prow-title">' + title + '</span>' + (byline ? '<span class="prow-topic">' + byline + '</span>' : '') + (sub ? '<span class="prow-sub">' + sub + '</span>' : '') + '</div>' + cta + '</div>'
+      + '<div class="prow-body">' + avatar + '<div class="prow-text">' + label + (title ? '<span class="prow-title">' + title + '</span>' : '') + (byline ? '<span class="prow-topic">' + byline + '</span>' : '') + (sub ? '<span class="prow-sub">' + sub + '</span>' : '') + '</div>' + cta + '</div>'
       + '</div>';
   }
 
