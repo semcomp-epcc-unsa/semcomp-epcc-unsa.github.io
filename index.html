@@ -309,9 +309,9 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
 <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
 <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:#4A5B70">AUSPICIAN</span>
 <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:60px">
-<img src="assets/2026/images/sponsors/millonar.jpeg" alt="Millonar" style="height:92px;max-width:260px;object-fit:contain">
-<img src="assets/2026/images/sponsors/neonix.png" alt="Neonix" style="height:104px;max-width:260px;object-fit:contain">
-<img src="assets/2026/images/ravn-logo.jpg" alt="Ravn" style="height:92px;max-width:260px;object-fit:contain">
+<a href="https://millonar.com" target="_blank" rel="noopener"><img src="assets/2026/images/sponsors/millonar.jpeg" alt="Millonar" style="height:92px;max-width:260px;object-fit:contain"></a>
+<a href="http://www.inkastudios.io/" target="_blank" rel="noopener"><img src="assets/2026/images/sponsors/neonix.png" alt="Neonix" style="height:104px;max-width:260px;object-fit:contain"></a>
+<a href="https://ravn.com/" target="_blank" rel="noopener"><img src="assets/2026/images/ravn-logo.jpg" alt="Ravn" style="height:92px;max-width:260px;object-fit:contain"></a>
 </div>
 </div>
 <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
@@ -527,7 +527,7 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
       { sec:'manana', time:'11:30', end:'12:00', kind:'event', idx:11 },
       { sec:'manana', time:'12:15', end:'12:30', kind:'event', idx:3 },
       { sec:'tarde', time:'12:30', end:'15:00', kind:'break', title:'Almuerzo libre' },
-      { sec:'tarde', time:'15:00', end:'18:00', kind:'taller', title:'Taller de Programación Competitiva', logo:'epccicon.png' }
+      { sec:'tarde', time:'15:00', end:'18:00', kind:'taller', title:'Taller de Programación Competitiva', logo:'epccicon.png', reg:'https://docs.google.com/forms/d/e/1FAIpQLSeGWV7D7tJa3ZFJE0rnMGA56keRu_q6NwcfkXnd73tOjjgx6w/viewform' }
     ],
     vie: [
       { sec:'manana', time:'9:00', end:'9:45', kind:'event', idx:1 },
@@ -556,8 +556,7 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
         ? '<div class="prow-avatar"><img src="' + photo + '" alt="" loading="lazy"></div>'
         : '<div class="prow-avatar"></div>'));
     var label = r.kind === 'taller' ? '<span class="tlabel">TALLER</span>' : '';
-    // INSCRIBIRME deshabilitado: la inscripción aún no se abre (ver sección #sede)
-    var cta = '';
+    var cta = r.reg ? '<a class="prow-cta" href="' + r.reg + '" target="_blank" rel="noopener">INSCRÍBETE</a>' : '';
     return '<div class="' + cls + '"' + attrs + '>'
       + '<div class="prow-time">' + r.time + (r.end ? '<small>– ' + r.end + '</small>' : '') + '</div>'
       + '<div class="prow-marker"><span class="prow-dot"></span></div>'
