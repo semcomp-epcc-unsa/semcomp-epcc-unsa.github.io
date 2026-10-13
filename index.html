@@ -517,7 +517,7 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
       { sec:'manana', time:'11:30', end:'12:00', kind:'event', idx:5 },
       { sec:'manana', time:'12:15', end:'12:30', kind:'event', idx:10 },
       { sec:'tarde', time:'12:30', end:'15:00', kind:'break', title:'Almuerzo libre' },
-      { sec:'tarde', time:'15:00', end:'18:00', kind:'taller', title:'Taller de Ciberseguridad', sub:'Cristhian Taipe · MistiHack', idx:17 }
+      { sec:'tarde', time:'15:00', end:'18:00', kind:'taller', title:'Taller de Ciberseguridad', sub:'Cristhian Taipe · MistiHack', idx:17, reg:'https://forms.gle/SzbHghnj5f82DtXQ9' }
     ],
     jue: [
       { sec:'manana', time:'9:00', end:'9:45', kind:'event', idx:8 },
@@ -556,7 +556,7 @@ dialog.pmodal .pm-close:hover{background:rgba(12,22,51,.14)}
         ? '<div class="prow-avatar"><img src="' + photo + '" alt="" loading="lazy"></div>'
         : '<div class="prow-avatar"></div>'));
     var label = r.kind === 'taller' ? '<span class="tlabel">TALLER</span>' : '';
-    var cta = r.reg ? '<a class="prow-cta" href="' + r.reg + '" target="_blank" rel="noopener">INSCRÍBETE</a>' : '';
+    var cta = r.reg ? '<a class="prow-cta" href="' + r.reg + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">INSCRÍBETE</a>' : '';
     return '<div class="' + cls + '"' + attrs + '>'
       + '<div class="prow-time">' + r.time + (r.end ? '<small>– ' + r.end + '</small>' : '') + '</div>'
       + '<div class="prow-marker"><span class="prow-dot"></span></div>'
